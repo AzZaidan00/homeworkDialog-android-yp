@@ -1,5 +1,10 @@
 package com.azim.homeworkdialog
 
+import android.app.Notification
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -45,7 +50,37 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.NotificationButton.setOnClickListener {
-            Toast.makeText(this,"Notification Button",Toast.LENGTH_SHORT).show()
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+                val channel_id = "Channel01"
+                val channel_Name = "notification"
+                val importance = NotificationManager.IMPORTANCE_DEFAULT
+                val mChannel = NotificationChannel(channel_id,channel_Name,importance)
+
+                mChannel.description = "Test Description"
+                mChannel.enableLights(true)
+                mChannel.lightColor = Color.RED
+                mChannel.enableVibration(true)
+
+                // Use notification.Builder to add the notification objects
+                val notification:Notification = Notification.Builder(this,channel_id)
+                    .setSmallIcon(R.drawable.ic_launcher_background)
+                    .setContentTitle("Android Notification")
+                    .setContentText("Check Android ATC New Course !!")
+                    .build()
+
+                // Register or add the channel with your Android system
+                val mNotificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+
+                if(mNotificationManager != null) {
+                    mNotificationManager.createNotificationChannel(mChannel)
+
+                    // Show the notification
+                    mNotificationManager.notify(1,notification)
+                }
+            }
+
+
+            // Toast.makeText(this,"Notification Button",Toast.LENGTH_SHORT).show()
         }
 
         binding.webviewButton.setOnClickListener {
