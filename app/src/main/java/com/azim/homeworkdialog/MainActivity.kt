@@ -25,13 +25,13 @@ class MainActivity : AppCompatActivity() {
 
         binding.snackbarButton.setOnClickListener {
             Snackbar.make(
-                binding.root, "Test",Snackbar.LENGTH_LONG).setAction("OK"){}.show()
+                binding.root, "Snackbar Notification, thank you",Snackbar.LENGTH_LONG).setAction("OK"){}.show()
         }
 
         binding.alerButton.setOnClickListener {
             val builder = AlertDialog.Builder(this)
             builder.setTitle("Android Alert")
-            builder.setMessage("We have a new message")
+            builder.setMessage("You have a new message")
 
             // builder set positiveButton
             builder.setPositiveButton(android.R.string.yes) {dialog,which ->
@@ -42,8 +42,8 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext,android.R.string.no,Toast.LENGTH_SHORT).show()
             }
             // builder set neutralButton
-            builder.setNeutralButton("Maybe") {dialog,which ->
-                Toast.makeText(applicationContext,"Maybe",Toast.LENGTH_SHORT).show()
+            builder.setNeutralButton("Remind Later") {dialog,which ->
+                Toast.makeText(applicationContext,"Remind Later",Toast.LENGTH_SHORT).show()
             }
             // Show AlertDialog
             builder.show()
