@@ -6,6 +6,7 @@ import android.app.NotificationManager
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.webkit.WebView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
@@ -84,7 +85,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.webviewButton.setOnClickListener {
-            Toast.makeText(this,"Webview Button",Toast.LENGTH_SHORT).show()
+
+            // Toast.makeText(this,"Webview Button",Toast.LENGTH_SHORT).show()
         }
     }
 }
