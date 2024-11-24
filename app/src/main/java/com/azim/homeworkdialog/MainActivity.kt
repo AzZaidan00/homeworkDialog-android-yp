@@ -7,6 +7,7 @@ import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.webkit.WebView
+import android.webkit.WebViewClient
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
@@ -85,7 +86,17 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.webviewButton.setOnClickListener {
+            // webViewClient allows you to handle
+            binding.webView.webViewClient = WebViewClient()
 
+            // this will load the url of the website
+            binding.webView.loadUrl("https://www.geeksforgeeks.org/android-webview-in-kotlin/")
+
+            // this will enable the javacript settings, it can also allow xss vulnerabilities
+            binding.webView.settings.javaScriptEnabled = true
+
+            // if you want to enable zoom feature
+            binding.webView.settings.setSupportZoom(true)
             // Toast.makeText(this,"Webview Button",Toast.LENGTH_SHORT).show()
         }
     }
